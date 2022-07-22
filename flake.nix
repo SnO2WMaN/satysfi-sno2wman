@@ -25,6 +25,14 @@
           overlays = [
             devshell.overlay
             satyxin.overlay
+            (final: prev: {
+              satyxinPackages = (
+                prev.satyxinPackages
+                // {
+                  sno2wman = self.packages.${system}.default;
+                }
+              );
+            })
           ];
         };
       in rec {
@@ -32,6 +40,7 @@
           satydist = pkgs.satyxin.buildSatydist {
             packages = [
               "fss"
+              "sno2wman"
             ];
           };
           example = pkgs.satyxin.buildDocument {
@@ -41,7 +50,17 @@
             entrypoint = "main.saty";
           };
         };
-        defaultPackage = self.packages."${system}".main;
+        packages.default = pkgs.satyxin.buildPackage {
+          name = "sno2wman";
+          src = ./.;
+          sources = {
+            dirs = [
+              "./src"
+            ];
+          };
+          deps = [];
+        };
+        defaultPackage = self.packages."${system}".default;
 
         devShell = pkgs.devshell.mkShell {
           imports = [
