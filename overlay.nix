@@ -1,5 +1,3 @@
 (final: prev: {
-  satyxinPackages = {
-    sno2wman = final.callPackage (import ./sno2wman.nix) {};
-  };
+  satyxin-sno2wman = final.callPackage (import ./sno2wman.nix) {};
 })
