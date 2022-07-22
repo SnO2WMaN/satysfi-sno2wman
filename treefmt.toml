@@ -10,4 +10,4 @@ includes = ["*.json", "*.toml", "*.md"]
 [formatter.satysfi-fmt]
 command = "satysfi-fmt"
 options = ["--write"]
-includes = ["*.saty"]
+includes = ["*.saty", "*.satyh"]
