@@ -1,0 +1,12 @@
+[devshell]
+packages = [
+  "alejandra",
+  "dprint",
+  "satysfi",
+  "satysfi-formatter",
+  "satysfi-language-server",
+]
+
+[[commands]]
+package = "treefmt"
+category = "formatter"
