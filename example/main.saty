@@ -1,8 +1,9 @@
 @require: stdjareport
-@import: ../src/sno2wman
+@require: sno2wman/sno2wman
 
+% @import: ../src/sno2wman
 document(|
-    title = { \SATySFi; };
+    title = { \SnO2WMaN; in \SATySFi; };
     author = { \SnO2WMaN; };
     show-title = false;
     show-toc = false;
