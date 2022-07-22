@@ -602,11 +602,11 @@
         "satysfi-language-server": "satysfi-language-server"
       },
       "locked": {
-        "lastModified": 1658056189,
-        "narHash": "sha256-6WjGyAszoRP6/fu/wE3AqdOfVUG1LoRDED2jTqcs72s=",
+        "lastModified": 1658505348,
+        "narHash": "sha256-98gDe29iCGgaZZrVwB6RexNOJKXNOCqi6DqfK9NiQL4=",
         "owner": "SnO2WMaN",
         "repo": "satyxin",
-        "rev": "58bf4344d28aa8bcf4c88fd6131ce7120bf33cf6",
+        "rev": "2866f45898442c5a46eb593ef9e5c49f4d77bc49",
         "type": "github"
       },
       "original": {
