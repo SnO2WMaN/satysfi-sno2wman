@@ -1,15 +1,15 @@
 @require: vdecoset
 
 module SnO2WMaN: sig
-  direct \SnO2WMaN : [] inline-cmd
-
-  end = struct
-  let-inline ctx \SnO2WMaN =
-    let size = get-font-size ctx in
-    let f = read-inline ctx in
-    let fd = ctx |> set-manual-rising (0pt -' (size *' 0.25)) |> read-inline in
-    let ib =
-      f {SnO} ++ kern (size *' 0.05) ++ fd{2} ++ f{WMaN}
-    in
-    script-guard Latin (no-break ib)
+    direct \SnO2WMaN: [] inline-cmd
+end = struct
+    let-inline ctx \SnO2WMaN =
+        let size = get-font-size ctx in
+        let f = read-inline ctx in
+        let fd =
+            ctx
+                |> set-font-size (size *' 0.75)
+                |> set-manual-rising (0pt -' (size *' 0.125))
+                |> read-inline in
+        let ib = f { SnO } ++ fd { 2 } ++ kern (size *' 0.125) ++ f { WMaN } in script-guard Latin (no-break ib)
 end
