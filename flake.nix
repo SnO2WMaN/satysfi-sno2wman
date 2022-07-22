@@ -34,10 +34,10 @@
               "fss"
             ];
           };
-          main = pkgs.satyxin.buildDocument {
+          example = pkgs.satyxin.buildDocument {
             inherit satydist;
             name = "main";
-            src = ./src;
+            src = ./example;
             entrypoint = "main.saty";
           };
         };

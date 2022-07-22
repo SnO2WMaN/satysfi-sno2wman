@@ -1,0 +1,11 @@
+@require: stdjareport
+@import: ../src/sno2wman
+
+document(|
+    title = { \SATySFi; };
+    author = { \SnO2WMaN; };
+    show-title = false;
+    show-toc = false;
+|)'<
+    +p{ 以上． }
+>
