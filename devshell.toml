@@ -3,7 +3,7 @@ packages = [
   "alejandra",
   "dprint",
   "satysfi",
-  "satysfi-formatter",
+  "satysfi-formatter-each",
   "satysfi-language-server",
 ]
 

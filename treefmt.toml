@@ -8,6 +8,5 @@ options = ["fmt"]
 includes = ["*.json", "*.toml", "*.md"]
 
 [formatter.satysfi-fmt]
-command = "satysfi-fmt"
-options = ["--write"]
+command = "satysfi-fmt-each"
 includes = ["*.saty", "*.satyh"]
