@@ -35,7 +35,7 @@
         };
       in rec {
         packages = rec {
-          satydist = pkgs.satyxin.buildSatydist {
+          satysfi-dist = pkgs.satyxin.buildSatysfiDist {
             packages = [
               "fss"
             ];
@@ -45,7 +45,7 @@
           };
 
           document-example = pkgs.satyxin.buildDocument {
-            inherit satydist;
+            satysfiDist = satysfi-dist;
             name = "main";
             src = ./example;
             entrypoint = "main.saty";
