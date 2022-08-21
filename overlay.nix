@@ -1,3 +1,7 @@
-(final: prev: {
-  satyxin-sno2wman = final.callPackage (import ./sno2wman.nix) {};
-})
+self: super: {
+  satyxinPackages =
+    super.satyxinPackages
+    // {
+      sno2wman = self.callPackage (import ./sno2wman.nix) {};
+    };
+}
