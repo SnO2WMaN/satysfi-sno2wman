@@ -1,7 +1,7 @@
-self: super: {
+final: prev: {
   satyxinPackages =
-    super.satyxinPackages
+    prev.satyxinPackages
     // {
-      sno2wman = self.callPackage (import ./sno2wman.nix) {};
+      sno2wman = final.callPackage (import ./sno2wman.nix) {};
     };
 }
