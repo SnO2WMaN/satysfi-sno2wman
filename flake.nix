@@ -48,7 +48,7 @@
           };
         };
 
-        packages.satyxin-package-sno2wman = pkgs.callPackage (import ./sno2wman.nix) {};
+        packages.satyxin-package-sno2wman = pkgs.satyxinPackages.sno2wman;
         packages.default = self.packages."${system}".satyxin-package-sno2wman;
 
         defaultPackage = self.packages."${system}".default;
