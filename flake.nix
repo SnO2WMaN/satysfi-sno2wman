@@ -20,9 +20,6 @@
   } @ inputs:
     {
       overlays.default = import ./overlay.nix;
-      overlay = self.overlays.default;
-
-      satyxinPackages.sno2wman = import ./sno2wman.nix;
     }
     // flake-utils.lib.eachDefaultSystem (
       system: let
@@ -30,29 +27,30 @@
           inherit system;
           overlays = [
             devshell.overlay
+
             satyxin.overlay
+            self.overlays.default
           ];
         };
       in rec {
         packages = rec {
           satysfi-dist = pkgs.satyxin.buildSatysfiDist {
-            packages = [
-              "fss"
-            ];
-            adhocPackages = with self.packages."${system}"; [
-              satyxin-package-sno2wman
+            packages = with pkgs.satyxinPackages; [
+              fss
+              sno2wman
             ];
           };
-
-          document-example = pkgs.satyxin.buildDocument {
+          doc-example = pkgs.satyxin.buildDocument {
             satysfiDist = satysfi-dist;
             name = "main";
             src = ./example;
             entrypoint = "main.saty";
           };
         };
+
         packages.satyxin-package-sno2wman = pkgs.callPackage (import ./sno2wman.nix) {};
         packages.default = self.packages."${system}".satyxin-package-sno2wman;
+
         defaultPackage = self.packages."${system}".default;
 
         devShell = pkgs.devshell.mkShell {
