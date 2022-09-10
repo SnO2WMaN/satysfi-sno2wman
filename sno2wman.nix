@@ -1,14 +1,14 @@
 {
   pkgs,
   satyxin,
-  satyxinPackages,
   ...
 }:
 satyxin.buildPackage {
-  name = "sno2wman";
+  pname = "satyxin-sno2wman";
   version = "1.0.0";
+
   outdir = "sno2wman";
-  sources = [
+  copyfrom = [
     ./src
   ];
 }

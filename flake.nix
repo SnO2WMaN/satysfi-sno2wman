@@ -1,21 +1,26 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
-    devshell.url = "github:numtide/devshell";
     satyxin.url = "github:SnO2WMaN/satyxin";
+  };
 
+  inputs = {
+    devshell.url = "github:numtide/devshell";
+
+    satysfi-formatter-upstream.url = "github:SnO2WMaN/satysfi-formatter/nix-integrate";
+    satysfi-language-server-upstream.url = "github:SnO2WMaN/satysfi-language-server/nix-integrate";
+
+    flake-utils.url = "github:numtide/flake-utils";
     flake-compat = {
       url = "github:edolstra/flake-compat";
       flake = false;
     };
   };
+
   outputs = {
     self,
     nixpkgs,
     flake-utils,
-    devshell,
-    satyxin,
     ...
   } @ inputs:
     {
@@ -25,10 +30,11 @@
       system: let
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [
+          overlays = with inputs; [
             devshell.overlay
-
-            satyxin.overlay
+            satyxin.overlays.default
+            satysfi-language-server-upstream.overlays.default
+            satysfi-formatter-upstream.overlays.default
             self.overlays.default
           ];
         };
@@ -53,9 +59,20 @@
 
         defaultPackage = self.packages."${system}".default;
 
-        devShell = pkgs.devshell.mkShell {
-          imports = [
-            (pkgs.devshell.importTOML ./devshell.toml)
+        devShells.default = pkgs.devshell.mkShell {
+          packages = with pkgs; [
+            alejandra
+            dprint
+            satysfi
+            satysfi-formatter-write-each
+            satysfi-language-server
+            treefmt
+          ];
+          commands = [
+            {
+              package = "treefmt";
+              category = "formatter";
+            }
           ];
         };
       }
